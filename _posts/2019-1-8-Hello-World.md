@@ -1,56 +1,31 @@
 ---
 layout: post
-title: Markdown Style Guide
+title: Jekyll Now Initial Setup
 ---
+Sharing my initial setup after the "30 second quick start"
 
-This is a demo of all styled elements in Jekyll Now.
+## Fixing code snippets bug
+Code snippets will appear like two concentric boxes without this fix: \
+https://github.com/barryclark/jekyll-now/issues/1055
 
-[View the markdown used to create this post](https://raw.githubusercontent.com/barryclark/www.jekyllnow.com/gh-pages/_posts/2014-6-19-Markdown-Style-Guide.md).
+Edit the top of `_sass/_highlights.scss`
+```css
+.highlight {
+  ...
+  margin: 0px 0 0px 0;
+  overflow: auto;
+}
 
-This is a paragraph, it's surrounded by whitespace. Next up are some headers, they're heavily influenced by GitHub's markdown style.
-
-## Header 2 (H1 is reserved for post titles)##
-
-### Header 3
-
-#### Header 4
-
-A link to [Jekyll Now](http://github.com/barryclark/jekyll-now/). A big ass literal link <http://github.com/barryclark/jekyll-now/>
-
-An image, located within /images
-
-![an image alt text]({{ site.baseurl }}/images/jekyll-logo.png "an image title")
-
-* A bulletted list
-- alternative syntax 1
-+ alternative syntax 2
-  - an indented list item
-
-1. An
-2. ordered
-3. list
-
-Inline markup styles:
-
-- _italics_
-- **bold**
-- `code()`
-
-> Blockquote
->> Nested Blockquote
-
-Syntax highlighting can be used with triple backticks, like so:
-
-```javascript
-/* Some pointless Javascript */
-var rawr = ["r", "a", "w", "r"];
+.highlight .highlight {
+  border: none;
+  box-shadow: none;
+}
 ```
 
-Use two trailing spaces  
-on the right  
-to create linebreak tags  
-
-Finally, horizontal lines
-
-----
-****
+## Adding a favicon
+Convert your avatar/logo to a 16x16 .ico named `favicon.ico` \
+Upload the favicon.ico to the root folder of your jekyll-now repo \
+Insert this line between the `<header></header>` tags in `_layouts/default.html`
+```
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+```
