@@ -5,8 +5,7 @@ title: Jekyll Now Initial Setup
 Sharing my initial setup after the "30 second quick start"
 
 ## Fixing code snippets bug
-Code snippets will appear like two concentric boxes without this fix: \
-https://github.com/barryclark/jekyll-now/issues/1055
+Code snippets will appear like two concentric boxes without this [fix](https://github.com/barryclark/jekyll-now/issues/1055):
 
 Edit the top of `_sass/_highlights.scss`
 ```css
