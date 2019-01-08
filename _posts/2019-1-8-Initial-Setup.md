@@ -26,6 +26,6 @@ Edit the top of `_sass/_highlights.scss`
 Convert your avatar/logo to a 16x16 .ico named `favicon.ico` \
 Upload the favicon.ico to the root folder of your jekyll-now repo \
 Insert this line between the `<header></header>` tags in `_layouts/default.html`
-```
+```html
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 ```
