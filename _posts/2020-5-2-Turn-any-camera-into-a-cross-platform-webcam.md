@@ -2,7 +2,10 @@
 layout: post
 title: Turn any camera into a cross platform webcam
 ---
-How to get access most cameras "live view" and turn it into a webcam by utilizing gPhoto2 and Gstreamer. How you install gPhoto2 and Gstreamer depends on your OS, so follow the download link and instructions here: https://gstreamer.freedesktop.org/download/ and here http://www.gphoto.org/
+How to get access most cameras "live view" and turn it into a webcam by utilizing gPhoto2 and Gstreamer.
+
+## Prerequisites
+Install gPhoto2 and Gstreamer follow the download links and instructions here: https://gstreamer.freedesktop.org/download/ and here http://www.gphoto.org/
 
 ## Universal method (via OBS Studio)
 In our universal implementation we are going to use OBS and it`s virtual webcam function, if you are a MacOS user you have to download this fork of OBS Studio: https://github.com/johnboiles/obs-mac-virtualcam
