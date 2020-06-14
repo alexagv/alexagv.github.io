@@ -17,6 +17,13 @@ ffmpeg -i input_video.mov -c:v libx264 -preset veryslow -tune film  -crf 30 -pix
 
 If you are not happy with the result tune the `crf` number until you are satisfied (higher number equals smaller file size)
 
+## The result
+Can you guess the filesize of the 4K(!) video below?
+<video muted autoplay controls>
+    <source src="/images/output_compressed.mp4" type="video/mp4">
+</video>
+Its actually only 4.7MB! In this case I used 35 as CRF number. The original file is from [here (88.6MB)](https://www.pexels.com/video/low-lying-clouds-covers-the-mountain-side-2888383/)
+
 ## Explanation of the parameters
 You can read in more detail about the different encoder options [here](https://trac.ffmpeg.org/wiki/Encode/H.264), but below is a quick explanation: 
 
