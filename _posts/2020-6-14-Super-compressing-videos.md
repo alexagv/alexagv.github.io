@@ -5,14 +5,14 @@ title: Super compressing videos
 How to effectivly compress any video with minimal quality loss using FFmpeg
 
 ## Introduction
-Imagine getting a 300MB video from the marketing department and they want to publish on the company website as a background element. 
+Imagine getting a 300MB video from the marketing department and its your job to publish it on the company website as a background element. 
 However, you refuse to publish any video bigger than 6MB to prevent the video for slowing down page reload times. 
 
 
 What do you do? Compressing 300MB to 6MB without making the video look like it was filmed with a potato might sound hard, but it isnt!
 
 ## The solution
-By using FFmpeg you can actually do it right away with this simple one-liner:
+By using [FFmpeg](https://ffmpeg.org/download.html) you can actually do it right away with this simple one-liner:
 ```
 ffmpeg -i input_video.mov -c:v libx264 -preset veryslow -tune film  -crf 30 -pix_fmt yuv420p -c:a copy output_compressed.mp4
 ```
@@ -26,24 +26,24 @@ Can you guess the filesize of the 4K video below?
 </video>
 Its actually only 4.7MB! 
 
-In this case I used 35 as CRF number. You can find the original file [here (88.6MB)](https://www.pexels.com/video/low-lying-clouds-covers-the-mountain-side-2888383/)
+In this case I used 35 as CRF number. You can find the original file [here (88.6MB)](https://www.pexels.com/video/low-lying-clouds-covers-the-mountain-side-2888383/).
 
 ## Explanation of the parameters
-You can read in more detail about the different encoder options [here](https://trac.ffmpeg.org/wiki/Encode/H.264), but below is a quick explanation: 
+You can read in more detail about the different encoder options [here](https://trac.ffmpeg.org/wiki/Encode/H.264).
 
-`input_video.mov` is the filename you want to compress, it can be a .mp4 .avi etc doesnt matter as long as FFmpeg is able to read it
+`input_video.mov` is the filename you want to compress, it can be a MP4-file, AVI-file etc doesn't it doesnt matter as long as FFmpeg is able to read it.
 
-`libx264` is the video encoder we are using. x264 is an open source software based h264 encoder so it migth run a bit slow depending on your CPU, but it has a ton of features and is perfect for this scenario and it is crossplatform so it will run no matter what OS you are using.
+`libx264` is the video encoder we are using. x264 is an open source software based h264 encoder so it migth run a bit slow depending on your CPU, but it is cross-platform so it will run no matter what OS you are using. Why h264 when we have more effective codecs such as AV1 or h265? In this case it is a matter of compability for the web. A search on [caniuse.com](https://caniuse.com/#search=h264) reveals that h264 is supported by most browsers while h265 or AV1 is not. 
 
-`-preset veryslow` tells the encoder to prioritize quality over computation time
+`-preset veryslow` tells the encoder to prioritize quality over computation time.
 
-`-tune film` tells the encoder that the video is a film and not a cartoon. If your video is from an animation with reduced nr of colors, straight lines and one colored backgrounds you might want to change this parameter
+`-tune film` tells the encoder that the video is a film and not a cartoon. If your video is an animation or a cartoon `animation` should be used and if the video is a slideshow `stillimage` should be used. 
 
-`-crf 30` tells the encoder to keep the same level of visual quality over the entire video instead of keeping a constant bitrate. The scale of crf goes from 0 (lossless) to 51 (worst quality) If your video consists of several shots and a constant bitrate is set some of the shots with a lot of details might look quite blocky and bad compared to some easier scenes with reduced motion/details like a potrait interview
+`-crf 30` tells the encoder to keep the same level of visual quality over the entire video instead of keeping a constant bitrate. The scale goes from 0 (lossless) to 51 (worst quality) and is exponential so increasing it with 6 will basically half the size of your previous value.
 
-`yuv420p` just makes the video playable in quicktime player
+`yuv420p` makes the video playable in QuickTime player.
 
-`-c:a copy` copies the exisiting soundtrack without any transcoding. In my case the video had a muted soundtrack, but if you dont want sound you can skip this. However, I`ve seen some video players refusing to play a video without sound so the safest bet is to have an empty soundtrack on your video instead of none.
+`-c:a copy` copies the exisiting soundtrack without any transcoding. In my case the video had a muted soundtrack, but if you dont want sound you can skip this. However, I've seen some video players refusing to play a video without sound so the safest bet is to have an empty soundtrack on your video instead of none.
 
-`output_compressed.mp4` is your output video
+`output_compressed.mp4` is your output video.
 
